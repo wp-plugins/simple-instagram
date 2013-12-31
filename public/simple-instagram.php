@@ -225,6 +225,9 @@ class simpleInstagram {
 
 	}
 	
+	private static function single_activate() {
+        }
+	
 	/**
 	 * Load the plugin text domain for translation.
 	 *
