@@ -101,6 +101,7 @@ This is likely due to a typo in the OAuth Redirect URL you provided in your App 
 ### 1.0.1 ###
 
 * Temporary fix to make authorization link open in new window to avoid 302 redirect from Instagram
+* Fixes deactivation error
 
 ### 1.0 ###
 * Initial Version
@@ -108,5 +109,5 @@ This is likely due to a typo in the OAuth Redirect URL you provided in your App 
 ## Upgrade Notice ##
 
 ### 1.0.1 ###
-Fixes the authorize button to avoid a 302 redirect. Upgrade immediately. 
+Fixes the authorize button to avoid a 302 redirect and deactivation error. Upgrade immediately. 
 
