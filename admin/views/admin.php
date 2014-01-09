@@ -79,7 +79,7 @@
     </div>
     <div class="section_content <?php if($set == 1){ echo "active"; } ?>">
      <?php if($set == 1){ ?>
-	   <iframe width="100%" src="<?php echo  get_site_url(); ?>/wp-admin/admin-ajax.php?action=register_instagram"</iframe>
+	   <iframe width="100%" src="<?php echo  get_site_url(); ?>/wp-admin/admin-ajax.php?action=register_instagram"></iframe>
 	   <?php }else{ ?>
 	     Please follow steps 1 and 2 first.
 	   <?php } ?>
