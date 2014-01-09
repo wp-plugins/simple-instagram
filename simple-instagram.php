@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       Simple Instagram
  * Description:       A plugin to allow users to include InstaGram feeds, media, and information.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Aaron Speer
  * Author URI:        aaronspeer.com
  * Text Domain:       simple-instagram
@@ -105,7 +105,7 @@ function register_instagram(){
 	?> 
 	
 	<div class="instagram">
-		<span><i class="fa fa-instagram"></i></span><a href="<?php echo $loginUrl; ?>">Login with Instagram</a>
+		<span><i class="fa fa-instagram"></i></span><a href="<?php echo $loginUrl; ?>" target="_blank">Login with Instagram</a>
 	</div>
 	<?php }else{
 		if($auth_check == 'error'){
@@ -116,7 +116,7 @@ function register_instagram(){
 			?>
 			<p>Whoops! It looks like there's a problem with your App credentials. Please check your entries in Step 02 and then use the button below to authorize the app once again.</p>
 			<div class="instagram">
-				<span><i class="fa fa-instagram"></i></span><a href="<?php echo $loginUrl; ?>">Login with Instagram</a>
+				<span><i class="fa fa-instagram"></i></span><a href="<?php echo $loginUrl; ?>" target="_blank">Login with Instagram</a>
 			</div>
 		<?php }else{
 		  //We have auth credentials, check to make sure they haven't expired
@@ -133,7 +133,7 @@ function register_instagram(){
 		  ?>
 		  <p>Whoops! It looks like your authorization has expired. Please use the button below to authorize the app once again.</p>
 		  <div class="instagram">
-				<span><i class="fa fa-instagram"></i></span><a href="<?php echo $loginUrl; ?>">Login with Instagram</a>
+				<span><i class="fa fa-instagram"></i></span><a href="<?php echo $loginUrl; ?>" target="_blank">Login with Instagram</a>
 			</div>
 		  <?php } ?>
 		<?php }
