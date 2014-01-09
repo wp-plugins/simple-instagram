@@ -3,7 +3,7 @@ Contributors: mr_speer
 Tags: instagram, social, simple, Instagram, feed, pictures
 Requires at least: 3.5.1
 Tested up to: 3.8
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,7 +102,7 @@ This is likely due to a typo in the OAuth Redirect URL you provided in your App 
 
 == Changelog ==
 
-= 1.0.1 =
+= 1.0.2 =
 * Temporary fix to make authorization link open in new window to avoid 302 redirect from Instagram
 * Fix deactivation error
 
@@ -111,6 +111,6 @@ This is likely due to a typo in the OAuth Redirect URL you provided in your App 
 
 == Upgrade Notice ==
 
-= 1.0.1 =
+= 1.0.2 =
 Fixes the authorize button to avoid a 302 redirect and deactivation error. Upgrade immediately. 
 
