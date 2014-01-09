@@ -1,5 +1,5 @@
 === Simple Instagram ===
-Contributors: mr_speer
+Contributors: mr_speer, werkpress
 Tags: instagram, social, simple, Instagram, feed, pictures
 Requires at least: 3.5.1
 Tested up to: 3.8
