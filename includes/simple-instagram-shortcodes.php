@@ -24,8 +24,7 @@ require_once('instagram.class.php');
 	 		$total = count($feed->data);
 	 		$diff = $total - $limit;
 			$start = $total - $diff;
-			for($i=$start; $i <= $total; $i++){
-				echo $i;	
+			for($i=$start; $i <= $total; $i++){	
 				unset($feed->data[$i]);
 			}
 	 	}
