@@ -20,6 +20,15 @@ require_once('instagram.class.php');
      	$feed = $instagram->getTagMedia($tag, $limit);
 	 }
 	 if(($feed) && count($feed->data) > 0){
+	 	if(count($feed->data) > $limit){
+	 		$total = count($feed->data);
+	 		$diff = $total - $limit;
+			$start = $total - $diff;
+			for($i=$start; $i <= $total; $i++){
+				echo $i;	
+				unset($feed->data[$i]);
+			}
+	 	}
 	 	$return = '<div class="si_feed">';
      
 		 $width = str_replace('px', '', $width);

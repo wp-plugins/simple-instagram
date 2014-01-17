@@ -3,7 +3,7 @@ Contributors: mr_speer, werkpress
 Tags: instagram, social, simple, Instagram, feed, pictures
 Requires at least: 3.5.1
 Tested up to: 3.8
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,9 @@ This is likely due to a typo in the OAuth Redirect URL you provided in your App 
 
 ## Changelog ##
 
+### 1.1.1 ###
+* Fixes: Forces tag feeds to respect the limit provided
+
 ### 1.1.0 ###
 * Adds: Ability to specify a user or tag in the feed shortcode and widget
 * Adds: Tag widget
@@ -118,6 +121,9 @@ This is likely due to a typo in the OAuth Redirect URL you provided in your App 
 * Initial Version
 
 ## Upgrade Notice ##
+
+### 1.1.1 ###
+Fixes a but with the Instagram API that was returning more results than the specified limit. 
 
 ### 1.1.0 ###
 Adds user selection and tag specification. Minor fixes to authorization process. Adds tool to search for User ID by user name. 
