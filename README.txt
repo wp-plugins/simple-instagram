@@ -1,5 +1,6 @@
 === Simple Instagram ===
 Contributors: mr_speer, werkpress
+Donate link: http://aaronspeer.com/simple_instagram_donation.php
 Tags: instagram, social, simple, Instagram, feed, pictures
 Requires at least: 3.5.1
 Tested up to: 3.8
