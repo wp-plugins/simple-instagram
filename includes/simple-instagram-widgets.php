@@ -27,10 +27,10 @@ class SI_Feed_Widget extends WP_Widget {
     //Our variables from the widget settings.
     $title = apply_filters('widget_title', $instance['title'] );
     $count = $instance['count'];
-	$user = isset($instance['user']) ? $instance['user'] : '';
-	if($user == ''){
-		$user = 'self';
-	}
+  $user = isset($instance['user']) ? $instance['user'] : '';
+  if($user == ''){
+    $user = 'self';
+  }
     echo $before_widget;
 
     // Display the widget title 
@@ -41,26 +41,29 @@ class SI_Feed_Widget extends WP_Widget {
      
      $feed = $instagram->getUserMedia($user, $count);
      if($feed && count($feed->data) > 0){
-     	$return = '<div class="si_feed_widget">';
+      $return = '<div class="si_feed_widget">';
      
-	     $return .= '<ul class="si_feed_list">';
-	     
-	     foreach($feed->data as $image){
-	       
-	       $url = $image->images->standard_resolution->url;
-	       
-	       $return .= '<li class="si_item">';
-	       
-	       $return .= '<a href="'.$image->link.'" target="_blank">';
-	       $return .= '<img src="'.$url.'">';
-	       $return .= '</a>';
-	       $return .= '</li>';
-	     }
-	    $return .= '</ul>';
-	    
-	    $return .= '</div>';
+       $return .= '<ul class="si_feed_list">';
+       
+       foreach($feed->data as $image){
+         
+         $url = $image->images->standard_resolution->url;
+
+         // Fix https
+         $url = str_replace('http://', '//', $url);
+
+         $return .= '<li class="si_item">';
+         
+         $return .= '<a href="'.$image->link.'" target="_blank">';
+         $return .= '<img src="'.$url.'">';
+         $return .= '</a>';
+         $return .= '</li>';
+       }
+      $return .= '</ul>';
+      
+      $return .= '</div>';
      }else{
-     	$return = '';
+      $return = '';
      }
      
     
@@ -76,7 +79,7 @@ class SI_Feed_Widget extends WP_Widget {
 
     $instance['title'] = strip_tags( $new_instance['title'] );
     $instance['count'] = $new_instance['count'];
-	$instance['user'] = $new_instance['user'];
+  $instance['user'] = $new_instance['user'];
     return $instance;
   }
 
@@ -146,10 +149,10 @@ class SI_Tag_Widget extends WP_Widget {
     //Our variables from the widget settings.
     $title = apply_filters('widget_title', $instance['title'] );
     $count = $instance['count'];
-	if($count > 25){
-		$count = 25;
-	}
-	$tag = $instance['tag'];
+  if($count > 25){
+    $count = 25;
+  }
+  $tag = $instance['tag'];
     echo $before_widget;
 
     // Display the widget title 
@@ -168,6 +171,9 @@ class SI_Tag_Widget extends WP_Widget {
        
        $url = $image->images->standard_resolution->url;
        
+       // Fix https
+       $url = str_replace('http://', '//', $url);
+
        $return .= '<li class="si_item">';
        
        $return .= '<a href="'.$image->link.'" target="_blank">';
@@ -191,7 +197,7 @@ class SI_Tag_Widget extends WP_Widget {
 
     $instance['title'] = strip_tags( $new_instance['title'] );
     $instance['count'] = $new_instance['count'];
-	$instance['tag'] = strip_tags( $new_instance['tag'] );
+  $instance['tag'] = strip_tags( $new_instance['tag'] );
     return $instance;
   }
 
@@ -212,7 +218,7 @@ class SI_Tag_Widget extends WP_Widget {
       <label for="<?php echo $this->get_field_id( 'tag' ); ?>"><?php _e('Tag:', 'example'); ?></label>
       <input id="<?php echo $this->get_field_id( 'tag' ); ?>" name="<?php echo $this->get_field_name( 'tag' ); ?>" value="<?php echo $instance['tag']; ?>" style="width:100%;" />
     </p>
-	
+  
     <p>
       <label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e('Number of Images (25 Maximum):', 'example'); ?></label>
       <input id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" value="<?php echo $instance['count']; ?>" style="width:100%;" />
@@ -281,16 +287,19 @@ class SI_Popular_Widget extends WP_Widget {
      
      for($i=0; $i <= $count; $i++){
        if($feed->data[$i]->images != NULL){
-           $url = $feed->data[$i]->images->standard_resolution->url;
+         $url = $feed->data[$i]->images->standard_resolution->url;
+         
+         // Fix https
+         $url = str_replace('http://', '//', $url);
+
+         $return .= '<li class="si_item">';
+         
+         $return .= '<a href="'.$feed->data[$i]->link.'" target="_blank">';
+         $return .= '<img src="'.$url.'">';
+         
+       $return .= '</a>';
        
-	       $return .= '<li class="si_item">';
-	       
-	       $return .= '<a href="'.$feed->data[$i]->link.'" target="_blank">';
-	       $return .= '<img src="'.$url.'">';
-	       
-		   $return .= '</a>';
-		   
-	       $return .= '</li>';
+         $return .= '</li>';
        }
        
     }
@@ -378,10 +387,13 @@ class SI_Profile_Widget extends WP_Widget {
     //Our variables from the widget settings.
     $title = apply_filters('widget_title', $instance['title'] );
     $profile_picture = $instance['profile_picture'];
-	$username = $instance['username'];
-	$full_name = $instance['full_name'];
-	$bio = $instance['bio'];
-	$website = $instance['website'];
+
+    
+
+    $username = $instance['username'];
+    $full_name = $instance['full_name'];
+    $bio = $instance['bio'];
+    $website = $instance['website'];
     
     
     echo $before_widget;
@@ -394,13 +406,14 @@ class SI_Profile_Widget extends WP_Widget {
      
      $user = $instagram->getUser();
      $data = $user->data;
-	      
-     
+        
      $return = '<div class="si_profile_widget">';
      
      if($profile_picture == 'true' && $data->profile_picture != ''){
+       // Fix https
+       $url = str_replace('http://', '//', $data->profile_picture);
        $return .= '<div class="si_profile_picture">';
-       $return .= '<img src="'.$data->profile_picture.'">';
+       $return .= '<img src="'.$url.'">';
        $return .= '</div>';
      }
      
@@ -433,12 +446,12 @@ class SI_Profile_Widget extends WP_Widget {
     $instance = $old_instance;
 
     $instance['title'] = strip_tags( $new_instance['title'] );
-	$instance['profile_picture'] = isset($new_instance['profile_picture']) ? 'true' : 'false';
-	$instance['username'] = isset($new_instance['username']) ? 'true' : 'false';
-	$instance['full_name'] = isset($new_instance['full_name']) ? 'true' : 'false';
-	$instance['bio'] = isset($new_instance['bio']) ? 'true' : 'false';
-	$instance['website'] = isset($new_instance['website']) ? 'true' : 'false';
-	
+  $instance['profile_picture'] = isset($new_instance['profile_picture']) ? 'true' : 'false';
+  $instance['username'] = isset($new_instance['username']) ? 'true' : 'false';
+  $instance['full_name'] = isset($new_instance['full_name']) ? 'true' : 'false';
+  $instance['bio'] = isset($new_instance['bio']) ? 'true' : 'false';
+  $instance['website'] = isset($new_instance['website']) ? 'true' : 'false';
+  
     return $instance;
   }
 

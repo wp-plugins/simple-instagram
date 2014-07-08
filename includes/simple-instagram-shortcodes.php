@@ -57,7 +57,9 @@ require_once('instagram.class.php');
 	           $url = $image->images->thumbnail->url;
 	           break;
 	       }
-	       
+
+	       // Fix https
+	       $url = str_replace('http://', '//', $url);
 	       if($wrapper == 'div'){
 	         $return .= '<div class="si_item">';
 	       }else{
@@ -135,7 +137,9 @@ require_once('instagram.class.php');
 	           $url = $feed->data[$i]->images->thumbnail->url;
 	           break;
 	       }
-	       
+
+	       // Fix https
+	       $url = str_replace('http://', '//', $url);
 	       if($wrapper == 'div'){
 	         $return .= '<div class="si_item">';
 	       }else{
@@ -161,7 +165,10 @@ require_once('instagram.class.php');
      for($i==0; $i <= $count; $i++){
        if($feed->data[$i]->images != NULL){
            $url = $feed->data[$i]->images->standard_resolution->url;
-       
+
+           // Fix https
+       	   $url = str_replace('http://', '//', $url);
+
 	       $return .= '<li class="si_item">';
 	       
 	       $return .= '<a href="'.$feed->data[$i]->link.'" target="_blank">';
