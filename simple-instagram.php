@@ -8,7 +8,7 @@
  * @author    Aaron Speer <adspeer@gmail.com>
  * @license   GPL-2.0+
  * @link      http://example.com
- * @copyright 2013 Aaron Speer
+ * @copyright 2015 Aaron Speer
  *
  * @wordpress-plugin
  * Plugin Name:       Simple Instagram
