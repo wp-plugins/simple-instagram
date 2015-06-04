@@ -13,7 +13,7 @@
  * @wordpress-plugin
  * Plugin Name:       Simple Instagram
  * Description:       A plugin to allow users to include InstaGram feeds, media, and information.
- * Version:           2.0
+ * Version:           2.0.1
  * Author:            Aaron Speer
  * Author URI:        aaronspeer.com
  * Text Domain:       simple-instagram
