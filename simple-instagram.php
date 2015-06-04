@@ -8,12 +8,12 @@
  * @author    Aaron Speer <adspeer@gmail.com>
  * @license   GPL-2.0+
  * @link      http://example.com
- * @copyright 2015 Aaron Speer
+ * @copyright 2013 Aaron Speer
  *
  * @wordpress-plugin
  * Plugin Name:       Simple Instagram
  * Description:       A plugin to allow users to include InstaGram feeds, media, and information.
- * Version:           2.0
+ * Version:           2.0.1
  * Author:            Aaron Speer
  * Author URI:        aaronspeer.com
  * Text Domain:       simple-instagram
