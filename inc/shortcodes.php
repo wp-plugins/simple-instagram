@@ -143,7 +143,7 @@ class SI_Shortcodes {
         if ( 'true' == $bio && $user->bio != '' ) {
             $return .= '<div class="si_bio">' . $user->bio . '</div>';
         }
-        
+
         if ( 'true' == $website && $user->website != '' ) {
             $return .= '<div class="si_website"><a href="' . $user->website . '">View Website</a></div>';
         }
@@ -204,12 +204,12 @@ class SI_Shortcodes {
             $url = str_replace( 'http://', '//', $url );
 
             $return .= $wrapper == 'div' ? '<div class="si_item">' : '<li class="si_item">';
-            
+
             $return .= $link == 'true' ? '<a href="' . $image->link . '" target="_blank">' : null;
 
             $image_caption = is_object( $image->caption ) ? $image->caption->text : '';
 
-            $return .= '<img alt="' . $image_caption. '" src="' . $url . '" ' . $w_param . ' >';
+            $return .= '<img alt="' . htmlspecialchars ( $image_caption, ENT_QUOTES ) . '" src="' . $url . '" ' . $w_param . ' >';
 
             $return .= $link == 'true' ? '</a>' : null;
 

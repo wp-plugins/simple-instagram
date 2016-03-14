@@ -14,7 +14,7 @@ class SI_Feed_Widget extends WP_Widget {
     public function SI_Feed_Widget() {
         $widget_ops  = array( 'classname' => 'si_feed_widget', 'description' => __( 'A widget to display your Instagram Feed', 'si_feed' ) );
         $control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'si_feed_widget' );
-        
+
         $this->WP_Widget( 'si_feed_widget', __( 'Simple Instagram Feed Widget', 'si_feed' ), $widget_ops, $control_ops );
     }
 
@@ -55,7 +55,7 @@ class SI_Feed_Widget extends WP_Widget {
                 $return .= '<a href="' . $image->link . '" target="_blank">';
 
                 $image_caption = is_object( $image->caption ) ? $image->caption->text : '';
-                $return .= '<img alt="'. $image_caption . '" src="' . $url . '">';
+                $return .= '<img alt="'. htmlspecialchars ( $image_caption, ENT_QUOTES ) . '" src="' . $url . '">';
                 $return .= '</a>';
                 $return .= '</li>';
             }
@@ -64,7 +64,7 @@ class SI_Feed_Widget extends WP_Widget {
 
             $return .= '</div>';
 
-        } 
+        }
 
         echo $return;
 
@@ -93,11 +93,11 @@ class SI_Feed_Widget extends WP_Widget {
             <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
                 <?php _e( 'Title:', 'simple-instagram' ); ?>
             </label>
-            <input 
-                id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" 
-                name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" 
-                value="<?php echo esc_attr( $instance['title'] ); ?>" 
-                style="<?php echo esc_attr( $style ); ?>" 
+            <input
+                id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+                name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"
+                value="<?php echo esc_attr( $instance['title'] ); ?>"
+                style="<?php echo esc_attr( $style ); ?>"
             />
         </p>
 
@@ -105,11 +105,11 @@ class SI_Feed_Widget extends WP_Widget {
             <label for="<?php echo esc_attr( $this->get_field_id( 'user' ) ); ?>">
                 <?php _e( 'User ID (leave blank to use your own feed):', 'simple-instagram' ); ?>
             </label>
-            <input 
-                id="<?php echo esc_attr( $this->get_field_id( 'user' ) ); ?>" 
-                name="<?php echo esc_attr( $this->get_field_name( 'user' ) ); ?>" 
-                value="<?php echo esc_attr( $instance['user'] ); ?>" 
-                style="<?php echo esc_attr( $style ); ?>" 
+            <input
+                id="<?php echo esc_attr( $this->get_field_id( 'user' ) ); ?>"
+                name="<?php echo esc_attr( $this->get_field_name( 'user' ) ); ?>"
+                value="<?php echo esc_attr( $instance['user'] ); ?>"
+                style="<?php echo esc_attr( $style ); ?>"
             />
         </p>
 
@@ -117,10 +117,10 @@ class SI_Feed_Widget extends WP_Widget {
             <label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>">
                 <?php _e( 'Number of Images (0 for Unmlimited):', 'simple-instagram' ); ?>
             </label>
-            <input id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" 
-                name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>" 
-                value="<?php echo esc_attr( $instance['count'] ); ?>" 
-                style="<?php echo esc_attr( $style ); ?>" 
+            <input id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"
+                name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>"
+                value="<?php echo esc_attr( $instance['count'] ); ?>"
+                style="<?php echo esc_attr( $style ); ?>"
             />
         </p>
 
