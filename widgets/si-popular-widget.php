@@ -14,7 +14,7 @@ class SI_Popular_Widget extends WP_Widget {
     public function SI_Popular_Widget() {
         $widget_ops  = array( 'classname' => 'si_popular_widget', 'description' => __( 'A widget to display popular Instagram Images', 'si_popular' ) );
         $control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'si_popular_widget' );
-        
+
         $this->WP_Widget( 'si_popular_widget', __( 'Simple Instagram Popular Widget', 'si_popular' ), $widget_ops, $control_ops );
     }
 
@@ -52,7 +52,7 @@ class SI_Popular_Widget extends WP_Widget {
                 $return .= '<li class="si_item">';
                 $return .= '<a href="' . $image->link . '" target="_blank">';
                 $image_caption = is_object( $image->caption ) ? $image->caption->text : '';
-                $return .= '<img alt="'. $image_caption . '" src="' . $url . '">';
+                $return .= '<img alt="'. htmlspecialchars ( $image_caption, ENT_QUOTES ) . '" src="' . $url . '">';
                 $return .= '</a>';
                 $return .= '</li>';
             }
@@ -67,7 +67,7 @@ class SI_Popular_Widget extends WP_Widget {
     }
 
     public function update( $new_instance, $old_instance ) {
-        
+
         $instance          = $old_instance;
         $instance['title'] = strip_tags( $new_instance['title'] );
         $instance['count'] = $new_instance['count'];
@@ -78,18 +78,18 @@ class SI_Popular_Widget extends WP_Widget {
     public function form( $instance ) {
 
         $defaults = array( 'title' => __( 'Popular from Instagram', 'simple-instagram' ), 'count' => __( '16', 'simple-instagram' ) );
-        $instance = wp_parse_args( (array) $instance, $defaults ); 
+        $instance = wp_parse_args( (array) $instance, $defaults );
         $style    = 'width:100%;'; ?>
 
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
                 <?php _e( 'Title:', 'simple-instagram' ); ?>
             </label>
-            <input 
-                id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" 
-                name="<?php echo esc_attr( $this->get_field_name( 'title' ) ) ?>" 
-                value="<?php echo esc_attr( $instance['title'] ); ?>" 
-                style="<?php echo esc_attr( $style ); ?>" 
+            <input
+                id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+                name="<?php echo esc_attr( $this->get_field_name( 'title' ) ) ?>"
+                value="<?php echo esc_attr( $instance['title'] ); ?>"
+                style="<?php echo esc_attr( $style ); ?>"
             />
         </p>
 
@@ -97,11 +97,11 @@ class SI_Popular_Widget extends WP_Widget {
             <label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>">
                 <?php _e( 'Number of Images (16 Maximum):', 'simple-instagram' ); ?>
             </label>
-            <input 
-                id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" 
-                name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>" 
-                value="<?php echo esc_attr( $instance['count'] ); ?>" 
-                style="<?php echo esc_attr( $style ); ?>" 
+            <input
+                id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"
+                name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>"
+                value="<?php echo esc_attr( $instance['count'] ); ?>"
+                style="<?php echo esc_attr( $style ); ?>"
             />
         </p>
 

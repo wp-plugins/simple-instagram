@@ -22,19 +22,19 @@ class SI_Tag_Widget extends WP_Widget {
 
         $title = apply_filters( 'widget_title', $instance['title'] );
         $count = $instance['count'];
-        
+
         if ( $count > 25 ) {
             $count = 25;
         }
 
         $tag = $instance['tag'];
-        
+
         echo $before_widget;
 
         if ( $title ) {
             echo $before_title . $title . $after_title;
         }
-        
+
         $instagram = new Simple_Instagram();
         $feed      = $instagram->get_tagged_media( $tag, $count );
 
@@ -53,7 +53,7 @@ class SI_Tag_Widget extends WP_Widget {
             $return .= '<li class="si_item">';
             $return .= '<a href="' . $image->link . '" target="_blank">';
             $image_caption = is_object( $image->caption ) ? $image->caption->text : '';
-            $return .= '<img alt="'. $image_caption . '" src="' . $url . '">';
+            $return .= '<img alt="'. htmlspecialchars ( $image_caption, ENT_QUOTES ) . '" src="' . $url . '">';
             $return .= '</a>';
             $return .= '</li>';
         }
@@ -78,18 +78,18 @@ class SI_Tag_Widget extends WP_Widget {
     public function form( $instance ) {
 
         $defaults = array( 'title' => __( 'From Instagram', 'simple-instagram' ), 'count' => __( '12', 'simple-instagram' ), 'tag' => __( 'food', 'simple-instagram' ) );
-        $instance = wp_parse_args( (array) $instance, $defaults ); 
+        $instance = wp_parse_args( (array) $instance, $defaults );
         $style    = 'width:100%;'; ?>
 
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
                 <?php _e( 'Title:', 'simple-instagram' ); ?>
             </label>
-            <input 
-                id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" 
-                name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" 
-                value="<?php echo esc_attr( $instance['title'] ); ?>" 
-                style="<?php echo esc_attr( $style ); ?>" 
+            <input
+                id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+                name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"
+                value="<?php echo esc_attr( $instance['title'] ); ?>"
+                style="<?php echo esc_attr( $style ); ?>"
             />
         </p>
 
@@ -97,11 +97,11 @@ class SI_Tag_Widget extends WP_Widget {
             <label for="<?php echo esc_attr( $this->get_field_id( 'tag' ) ); ?>">
                 <?php _e( 'Tag:', 'simple-instagram' ); ?>
             </label>
-            <input 
-                id="<?php echo esc_attr( $this->get_field_id( 'tag' ) ); ?>" 
-                name="<?php echo esc_attr( $this->get_field_name( 'tag' ) ); ?>" 
-                value="<?php echo esc_attr( $instance['tag'] ); ?>" 
-                style="<?php echo esc_attr( $style ); ?>" 
+            <input
+                id="<?php echo esc_attr( $this->get_field_id( 'tag' ) ); ?>"
+                name="<?php echo esc_attr( $this->get_field_name( 'tag' ) ); ?>"
+                value="<?php echo esc_attr( $instance['tag'] ); ?>"
+                style="<?php echo esc_attr( $style ); ?>"
             />
         </p>
 
@@ -109,11 +109,11 @@ class SI_Tag_Widget extends WP_Widget {
             <label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>">
                 <?php _e( 'Number of Images (25 Maximum):', 'simple-instagram' ); ?>
             </label>
-            <input 
-                id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" 
-                name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>" 
-                value="<?php echo esc_attr( $instance['count'] ); ?>" 
-                style="<?php echo esc_attr( $style ); ?>" 
+            <input
+                id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"
+                name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>"
+                value="<?php echo esc_attr( $instance['count'] ); ?>"
+                style="<?php echo esc_attr( $style ); ?>"
             />
         </p>
 
